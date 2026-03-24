@@ -2,6 +2,7 @@ fastapi
 uvicorn
 gdown
 pypdf
+sentence-transformers
 langchain-text-splitters
 sentence-transformers
 faiss-cpu
