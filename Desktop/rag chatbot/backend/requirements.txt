@@ -1,10 +1,6 @@
-fastapi
-uvicorn
-gdown
-pypdf
-langchain-text-splitters
+streamlit
 sentence-transformers
 faiss-cpu
-openai
-python-dotenv
 numpy
+python-dotenv
+openai
