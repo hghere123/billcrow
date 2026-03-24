@@ -1,6 +1,12 @@
 # Mini RAG Pipeline
 
 A comprehensive Retrieval-Augmented Generation (RAG) system built for answering questions grounded in internal documents. This project consists of a Python FastAPI backend, a custom React chatbot frontend, and an automated ingestion pipeline.
+<img width="1713" height="810" alt="image" src="https://github.com/user-attachments/assets/f6417840-307e-4b0c-a619-2748b2145053" />
+<img width="1766" height="820" alt="image" src="https://github.com/user-attachments/assets/3a0bbcb9-0e7e-4fc5-a474-bc59046e52c5" />
+
+# References
+Most precise answer comes when you kep the size of the chunk like this.
+
 
 ## 🏗 Architecture & Tech Stack
 
@@ -22,7 +28,7 @@ A comprehensive Retrieval-Augmented Generation (RAG) system built for answering 
 3. **Grounded Generation:**
    - The retrieved chunks are formatted into a strict prompt template.
    - **Enforcing Grounding:** The prompt specifically instructs the model and system: *"If the answer is not contained in the context, explicitly say 'I don't know'. Do not attempt to guess or hallucinate."*
-   - Generation temperature is set to `0.0` for maximum precision and predictability.
+   - Generation temperature is set to `0.1` for maximum precision and predictability.
 
 ## 🚀 How to Run Locally
 
@@ -84,4 +90,5 @@ To swap OpenRouter for a local LLM, we can use Ollama. This takes processing ful
 ## 📊 Deployment Strategy
 
 1. **Frontend**: Deploy the React App statics easily on **Vercel** or **Netlify**. Update `frontend/src/App.jsx` to point to the production backend URL instead of `localhost:8000`.
-2. **Backend**: Host the FastAPI server on **Render**, **Railway**, or **Heroku**. You will need to commit the `FAISS` index folder, or configure the host to run `ingest.py` as a build command. Set the `OPENROUTER_API_KEY` as an environment variable in the dashboard.
+2. **Backend**: Host the Streamlit app on Streamlit Cloud. Commit the data/index FAISS folder to the repo (or configure Streamlit Cloud to run ingest.py as a pre‑deploy step). Set OPENROUTER_API_KEY as a secret/environment variable in the Streamlit app settings/dashboard.
+
