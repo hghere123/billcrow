@@ -25,21 +25,33 @@ def main():
     if "history" not in st.session_state:
         st.session_state.history = []
 
+    # show previous messages
     for role, text in st.session_state.history:
         if role == "user":
             st.markdown(f"**You:** {text}")
         else:
             st.markdown(f"**Assistant:** {text}")
 
-    question = st.text_input("Your question", placeholder="How does Indecimal reduce hidden surprises in pricing?")
+    question = st.text_input(
+        "Your question",
+        placeholder="How does Indecimal reduce hidden surprises in pricing?",
+    )
+
     if st.button("Ask") and question.strip():
+        # add user message
         st.session_state.history.append(("user", question))
+
+        # generate answer
         with st.spinner("Thinking..."):
             contexts = rag.retrieve(question, top_k=3)
             answer = rag.generate_answer(question, contexts)
+
+        # add assistant message
         st.session_state.history.append(("assistant", answer))
-        st.experimental_rerun()
+        # no explicit rerun needed; Streamlit will rerun automatically
 
 
 if __name__ == "__main__":
     main()
+
+
